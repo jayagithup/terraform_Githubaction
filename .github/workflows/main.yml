@@ -39,9 +39,7 @@ jobs:
         run: terraform plan -out=tfplan
 
       # Apply only when code is pushed/merged to main, never on pull requests
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve tfplan
+           # Apply only when code is pushed/merged to main, never on pull requests
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: terraform apply -auto-approve tfplan
